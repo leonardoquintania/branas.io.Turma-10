@@ -1,4 +1,4 @@
-Instalação do Node.js
+# Instalação do Node.js
 
 Vamos começar inicializando o nosso projeto no Node.js com o comando npm init -y.
 
@@ -7,24 +7,32 @@ Caso você não tenha o Node.js instalado, basta entrar em https://nodejs.org, b
 Eu sempre recomendo que você utilize a última versão estável, estou utilizando a versão 16. Fique atento caso esteja utilizando uma versão muito antiga.
 
 
-Inicialização do Projeto
+# Inicialização do Projeto
 
 Após inicializar o projeto, o arquivo package.json será criado. Lá vão ficar as dependências e também os scripts de execução tanto do TypeScript quanto dos testes.
 
 
-Instalação e Inicialização do TypeScript
+## Instalação e Inicialização do TypeScript
 
 Instale o TypeScript utilizando o comando abaixo, aproveitando para instalar outras dependências:
 
+
+```bash
 yarn add typescript jest @types/jest ts-node ts-jest
+```
 
 Você também pode utilizar o npm
 
+```bash
 npm install typescript jest @types/jest ts-node ts-jest
+```
+
 
 Depois disso, crie o arquivo tsconfig.json:
 
+```bash
 npx tsc --init
+```
 
 Com isso, o arquivo tsconfig.js deve ter sido criado e estamos prontos para começar.
 
@@ -33,8 +41,9 @@ Configuração do Jest
 
 Configure o Jest utilizando o comando abaixo:
 
+```bash
 npx ts-jest config:init
-
+```
 
 
 Configuração do TypeScript
@@ -43,7 +52,7 @@ O TypeScript tem um compilador que faz a conversão do código para JavaScript. 
 
 tsconfig.json
 
-
+```json
 {
     "compilerOptions": {
     "incremental": true,
@@ -58,7 +67,7 @@ tsconfig.json
         "test"
     ]
 }
-
+```
 
 Fique totalmente à vontade para configurar de forma diferente, conforme as preferências que você já esteja acostumado.
 
@@ -69,17 +78,18 @@ Pronto, agora crie uma pasta chamada src e test dentro delas crie dois arquivos:
 
 Circle.test.ts
 
-
+```js
 import Circle from "../src/Circle";
 
 test("Should calculate the area of circle", function () {
     const circle = new Circle(2);
     expect(circle.getArea()).toBe(12.566370614359172);
 });
+```
 
 Circle.ts
 
-
+```js
 export default class Circle {
 
    constructor (readonly radius: number) {
@@ -89,9 +99,11 @@ export default class Circle {
         return 2 * Math.PI * this.radius;
     }
 }
-
+``` 
 Agora basta executar:
 
+```bash
 npx jest
+```
 
 Se os testes tiverem sido executados com sucesso está tudo pronto!
